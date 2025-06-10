@@ -4,3 +4,12 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+h1 {
+    color: #4A8E3D;
+}
+
+a {
+    color: #121212;
+    border-color: #3B6B2C;
+}
