@@ -1,11 +1,13 @@
 <script lang="ts">
+  import { getRandomImage } from "$lib/utils/getRandomImage";
+
   let data: any = $state([]);
 
   $effect(() => {
     const getData = async () => {
       try {
         const response = await fetch(
-          "https://zelda.fanapis.com/api/characters?limit=20"
+          "https://zelda.fanapis.com/api/items?limit=20"
         );
         const result = await response.json();
         data = result.data;
@@ -21,10 +23,13 @@
 <article>
   <section>
     {#each data as game}
-      <div class="item-card">
-        <h2>{game.name}</h2>
-        <p>Release Date: {game.released_date}</p>
-        <p>{game.description}</p>
+      <div class="flex flex-col items-center justify-center backdrop-blur-xs py-8 rounded-xl shadow-2xl item-card">
+        <div>
+          <img src={getRandomImage()} alt="personaje zelda" class="size-40 aspect-square object-cover rounded-xl">
+        </div>
+        <div class="py-5">
+          <h2>{game.name}</h2>
+        </div>
       </div>
     {/each}
   </section>
@@ -37,19 +42,14 @@
 
   article section {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    place-content: center;
+    grid-template-columns: repeat(3, 300px);
     gap: 20px;
-    padding: 20px;
     overflow-y: scroll;
   }
 
   .item-card {
     background-color: #c3d5c8;
-    backdrop-filter: blur(2px);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
   }
 
   @media (max-width: 900px) {

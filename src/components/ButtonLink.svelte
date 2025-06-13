@@ -2,7 +2,7 @@
   const { href, name } = $props();
 </script>
 
-<a {href} class="mb-8 text-lg rounded-sm border-2 p-2">
+<a href={href} class="mb-8 text-lg rounded-sm border-2 p-2">
   {name}
 </a>
 
